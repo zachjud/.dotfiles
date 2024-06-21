@@ -5,7 +5,8 @@ zsh:
 	@echo -n "Checking for BlexMono Nerd Font Install... "
 	@if ! fc-list | grep "BlexMono Nerd Font Mono" >/dev/null 2>/dev/null; then \
 		echo "Not Found, Installing BlexMono Nerd Font"; \
-		curl -fl -o $${HOME}/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/IBMPlexMono; \
+		wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/IBMPlexMono.zip; \
+		sudo unzip IBMPlexMono.zip -d /usr/share/fonts; \
 	else \
 		echo "BlexMono Nerd Font Found"; \
 	fi
