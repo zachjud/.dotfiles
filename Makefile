@@ -2,7 +2,7 @@ CURRENT_DIR := $(shell pwd)
 all: zsh
 
 zsh:
-	@if ! command -v starship >& /dev/null; then \
+	@if ! command -v starship &> /dev/null; then \
 		echo "Installing starship"; \
 		echo "Ensure that a Nerd Font is installed and enabled in the terminal"; \
 		curl -sS https://starship.rs/install.sh | sh; \
