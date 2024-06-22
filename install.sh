@@ -2,7 +2,7 @@
 
 function yes_no() {
   while true; do
-    read -p "[y/n]" yn
+    read -p "[y/n] " yn
     case $yn in
       [Yy]* ) return 1;;
       [Nn]* ) return 0;;
@@ -11,7 +11,7 @@ function yes_no() {
   done
 }
 
-function zsh_setup() {
+function check_nerd_font {
 	echo -n "Checking for BlexMono Nerd Font Install... "
 	if ! fc-list | grep "BlexMono Nerd Font Mono" >/dev/null 2>/dev/null; then
 		echo -n "Not Found, Install BlexMono Nerd Font Mono? "
@@ -23,7 +23,9 @@ function zsh_setup() {
 	else
 		echo "BlexMono Nerd Font Found"
 	fi
+}
 
+function check_starship_install {
 	echo -n "Checking for Starship Install... "
 	if ! command -v starship >/dev/null 2>/dev/null; then
 		echo -n "Not Found, Install Starship? "
@@ -34,7 +36,9 @@ function zsh_setup() {
 	else
 		echo "Starship Install Found"
 	fi
+}
 
+function check_zplug {
 	echo -n "Checking for Zplug Install... "
 	if [ ! -d "${HOME}/.zplug" ]; then
 		echo -n "Not Found, Install Zplug? "
@@ -45,7 +49,9 @@ function zsh_setup() {
 	else
 		echo "Zplug Install Found"
 	fi
+}
 
+function check_fzf {
   echo -n "Checking for fzf Install... "
   if ! command -v fzf >/dev/null 2>/dev/null; then
     echo -n "Not Found, Install fzf? "
@@ -56,7 +62,9 @@ function zsh_setup() {
   else
     echo "fzf Install Found"
   fi
+}
 
+function check_neofetch {
   echo -n "Checking for neofetch Install... "
   if ! command -v neofetch >/dev/null 2>/dev/null; then
     echo -n "Not Found, Install neofetch? "
@@ -67,8 +75,10 @@ function zsh_setup() {
   else
     echo "neofetch Install Found"
   fi
+}
 
-  echo -n "Checking for ripgrep Install... "
+function check_ripgrep {
+    echo -n "Checking for ripgrep Install... "
   if ! command -v ripgrep >/dev/null 2>/dev/null; then
     echo -n "Not Found, Install ripgrep? "
     yes_no
@@ -78,6 +88,15 @@ function zsh_setup() {
   else
     echo "ripgrep Install Found"
   fi
+}
+
+function zsh_setup() {
+  check_nerd_font
+  check_starship_install
+  check_zplug
+  check_fzf
+  check_neofetch
+  check_ripgrep
 
 	echo "Linking .zshrc"
   ln -si -t ${HOME} $(readlink -f .zshrc)
