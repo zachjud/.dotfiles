@@ -80,7 +80,7 @@ function zsh_setup() {
   fi
 
 	echo "Linking .zshrc"
-	ln -si -t ${HOME} ${CURRENT_DIR}/.zshrc
+  ln -si -t ${HOME} $(readlink -f .zshrc)
 }
 
 declare -A targets
