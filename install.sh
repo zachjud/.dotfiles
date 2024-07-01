@@ -58,7 +58,7 @@ function check_fzf {
     yes_no
     if (( $? == 1 )); then
       git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
-      ${HOME}/.fzf/install
+      ${HOME}/.fzf/install --bin
     fi
   else
     echo "fzf Install Found"
