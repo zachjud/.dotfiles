@@ -45,8 +45,8 @@ export PATH=$HOME/.local/bin:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-# Aliases
-alias ls="ls --color=auto"
+# Use general colorizer when available
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
 # Keybindings
 bindkey -M viins 'jj' vi-cmd-mode

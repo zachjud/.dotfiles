@@ -57,7 +57,8 @@ function check_fzf {
     echo -n "Not Found, Install fzf? "
     yes_no
     if (( $? == 1 )); then
-      echo "TODO: Implement fzf install"
+      git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
+      ${HOME}/.fzf/install
     fi
   else
     echo "fzf Install Found"
