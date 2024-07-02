@@ -25,6 +25,10 @@ zplug "zsh-users/zsh-completions"
 zplug "zpm-zsh/clipboard"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
+# Use Neovim as man pager
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
@@ -55,3 +59,6 @@ bindkey -M viins 'jj' vi-cmd-mode
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 export FZF_DEFAULT_OPTS="--color=16"
 source <(fzf --zsh)
+
+# Aliases
+alias fzf-preview="fzf --preview 'bat -n --color=always {}'"
