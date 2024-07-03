@@ -7,6 +7,9 @@ unsetopt beep nomatch notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+# Install dependencies
+source ~/.config/zsh/dependencies.zsh
+
 # Fancy Visual Stuff
 if [ $TERM == "xterm-kitty" ] || [ $TERM == "xterm-256color" ];
 then
@@ -24,10 +27,6 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
 zplug "zpm-zsh/clipboard"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-# Use Neovim as man pager
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -48,6 +47,10 @@ ENHANCD_DISABLE_DOT=1
 export PATH=$HOME/.local/bin:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# Use Neovim as man pager
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
 # Use general colorizer when available
 [[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
