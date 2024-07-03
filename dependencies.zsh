@@ -48,7 +48,7 @@ function check_fzf {
     if (( $? == 1 )); then
       git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
       ${HOME}/.fzf/install --bin
-      ln -si -t "${HOME}/zach/.local/bin" $(readlink -f "${HOME}/.fzf/bin/fzf")
+      ln -si -t "${HOME}/.local/bin" $(readlink -f "${HOME}/.fzf/bin/fzf")
     fi
   fi
 }
