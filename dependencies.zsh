@@ -11,32 +11,32 @@ function yes_no() {
 }
 
 function check_nerd_font {
-	if ! fc-list | grep "BlexMono Nerd Font Mono" >/dev/null 2>/dev/null; then
-		echo -n "Not Found, Install BlexMono Nerd Font Mono? "
+  if ! fc-list | grep "BlexMono Nerd Font Mono" >/dev/null 2>/dev/null; then
+    echo -n "Not Found, Install BlexMono Nerd Font Mono? "
     yes_no
     if (( $? == 1 )); then
-		  wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/IBMPlexMono.zip
-		  sudo unzip IBMPlexMono.zip -d /usr/share/fonts
+      wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/IBMPlexMono.zip
+      sudo unzip IBMPlexMono.zip -d /usr/share/fonts
     fi
-	fi
+  fi
 }
 
 function check_starship {
-	if ! command -v starship >/dev/null 2>/dev/null; then
-		echo -n "Starship Not Found, Install Starship? "
+  if ! command -v starship >/dev/null 2>/dev/null; then
+    echo -n "Starship Not Found, Install Starship? "
     yes_no
     if (( $? == 1 )); then
-		  curl -sS https://starship.rs/install.sh | sh
+      curl -sS https://starship.rs/install.sh | sh
     fi
   fi
 }
 
 function check_zplug {
-	if [ ! -d "${HOME}/.zplug" ]; then
-		echo -n "Zplug Not Found, Install Zplug? "
+  if [ ! -d "${HOME}/.zplug" ]; then
+    echo -n "Zplug Not Found, Install Zplug? "
     yes_no
     if (( $? == 1 )); then
-		  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+      curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
     fi
   fi
 }
@@ -48,6 +48,7 @@ function check_fzf {
     if (( $? == 1 )); then
       git clone --depth 1 https://github.com/junegunn/fzf.git ${HOME}/.fzf
       ${HOME}/.fzf/install --bin
+      ln -si -t "${HOME}/zach/.local/bin" $(readlink -f "${HOME}/.fzf/bin/fzf")
     fi
   fi
 }
