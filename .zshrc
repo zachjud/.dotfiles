@@ -7,6 +7,21 @@ unsetopt beep nomatch notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+# Environmental Variables
+export PATH=$HOME/.local/bin:$PATH
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# Use Neovim as man pager
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
+
+# Use general colorizer when available
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
+
+# Keybindings
+bindkey -M viins 'jj' vi-cmd-mode
+
 # Install dependencies
 source ~/.config/zsh/dependencies.zsh
 
@@ -42,21 +57,6 @@ zplug load
 # Autosuggestion plugins
 ENHANCD_FILTER=fzy
 ENHANCD_DISABLE_DOT=1
-
-# Environmental Variables
-export PATH=$HOME/.local/bin:$PATH
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-# Use Neovim as man pager
-export MANPAGER='nvim +Man!'
-export MANWIDTH=999
-
-# Use general colorizer when available
-[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
-
-# Keybindings
-bindkey -M viins 'jj' vi-cmd-mode
 
 # Fzf integration
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
