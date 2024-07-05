@@ -58,18 +58,17 @@ function check_neofetch {
     echo -n "Neofetch Not Found, Install Neofetch? "
     yes_no
     if (( $? == 1 )); then
-      echo "TODO: Implement Neofetch install"
+      git clone https://github.com/dylanaraps/neofetch.git
+      cd neofetch
+      sudo make install
+      cd ..
     fi
   fi
 }
 
 function check_ripgrep {
   if ! command -v rg >/dev/null 2>/dev/null; then
-    echo -n "Ripgrep Not Found, Install Ripgrep? "
-    yes_no
-    if (( $? == 1 )); then
-      echo "TODO: Implement Ripgrep install"
-    fi
+    echo "Please Install Ripgrep using your package manager"
   fi
 }
 

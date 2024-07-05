@@ -7,6 +7,9 @@ unsetopt beep nomatch notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
+# Install dependencies
+source ~/.config/zsh/dependencies.zsh
+
 # Environmental Variables
 export PATH=$HOME/.local/bin:$PATH
 export EDITOR="nvim"
@@ -21,9 +24,6 @@ export MANWIDTH=999
 
 # Keybindings
 bindkey -M viins 'jj' vi-cmd-mode
-
-# Install dependencies
-source ~/.config/zsh/dependencies.zsh
 
 # Fancy Visual Stuff
 if [ $TERM == "xterm-kitty" ] || [ $TERM == "xterm-256color" ];
