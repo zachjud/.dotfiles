@@ -7,13 +7,13 @@ unsetopt beep nomatch notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
 
-# Install dependencies
-source ~/.config/zsh/dependencies.zsh
-
 # Environmental Variables
 export PATH=$HOME/.local/bin:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
+
+# Install dependencies
+source ~/.config/zsh/dependencies.zsh
 
 # Use Neovim as man pager
 export MANPAGER='nvim +Man!'
