@@ -8,6 +8,7 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 # Environmental Variables
+mkdir -p $HOME/.local/bin
 export PATH=$HOME/.local/bin:$PATH
 export EDITOR="nvim"
 export VISUAL="nvim"
