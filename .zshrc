@@ -60,7 +60,7 @@ ENHANCD_DISABLE_DOT=1
 
 # Fzf integration
 export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
-export FZF_DEFAULT_OPTS="--color=16"
+export FZF_DEFAULT_OPTS="-m --bind ctrl-a:select-all,ctrl-d:deselect-all --color=16"
 source <(fzf --zsh)
 
 # Aliases
