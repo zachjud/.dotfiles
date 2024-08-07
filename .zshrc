@@ -66,4 +66,4 @@ source <(fzf --zsh)
 
 # Aliases
 alias fzf-preview="fzf --preview 'bat -n --color=always {}'"
-alias search-package="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro sudo pacman -S"
+alias search-package="yay -Slq | fzf --multi --preview 'yay -Si {1}'"
