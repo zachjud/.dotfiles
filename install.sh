@@ -27,9 +27,9 @@ function nvim_setup() {
 function zsh_setup() {
   echo "Linking .zshrc"
   mkdir -p "$HOME/.config/zsh"
-  ln -si -t "$HOME/.config/zsh" $(readlink -f zsh/dependencies.zsh)
-  ln -si -t "$HOME/.config/zsh" $(readlink -f zsh/env.zsh)
-  ln -si -t ${HOME} $(readlink -f zsh/.zshrc)
+  ln -si -t "$HOME/.config/zsh" "$(readlink -f "$(dirname "$0")/zsh/dependencies.zsh")"
+  ln -si -t "$HOME/.config/zsh" "$(readlink -f "$(dirname "$0")/zsh/env.zsh")"
+  ln -si -t ${HOME} "$(readlink -f "$(dirname "$0")/zsh/.zshrc")"
 }
 
 function all_setup() {
