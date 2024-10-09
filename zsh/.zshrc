@@ -2,7 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
-setopt autocd extendedglob
+setopt autocd extendedglob appendhistory share_history
 unsetopt beep nomatch notify
 bindkey -v
 # End of lines configured by zsh-newuser-install
@@ -15,6 +15,9 @@ export VISUAL="nvim"
 
 # Install dependencies
 source ~/.config/zsh/dependencies.zsh
+
+# Environment specific config
+source ~/.config/zsh/env.zsh
 
 # Use Neovim as man pager
 export MANPAGER='nvim +Man!'
@@ -66,4 +69,3 @@ source <(fzf --zsh)
 
 # Aliases
 alias fzf-preview="fzf --preview 'bat -n --color=always {}'"
-alias search-package="yay -Slq | fzf --multi --preview 'yay -Si {1}'"
