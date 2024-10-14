@@ -2,51 +2,35 @@ local wk = require('which-key')
 
 vim.g.mapleader = " "
 
-wk.register({['jj'] = {'<esc>', 'Escape Insert Mode'}}, {mode='i'})
-
-wk.register({
-  g = {
-    name = "LSP Go to",
-    D = {vim.lsp.buf.declaration(), 'Go to Declaration'},
-    d = {vim.lsp.buf.definition(), 'Go to Definition'},
-    r = {vim.lsp.buf.references(), 'Go to References'},
-    i = {vim.lsp.buf.implementation(), 'Go to Implementation'},
-    t = {vim.lsp.buf.implementation(), 'Go to Type Definition'},
-  }
+wk.add({
+  {"jj", "<esc>", desc = "Escape Insert Mode", mode = "i"},
+  {"<leader><Tab>", "<cmd>Neotree toggle<cr>", desc = "Toggle File Tree"},
+  {"g", group = "LSP Go to"},
+  {"D", vim.lsp.buf.declaration(), desc = 'Go to Declaration'},
+  {"d", vim.lsp.buf.definition(), desc = 'Go to Definition'},
+  {"r", vim.lsp.buf.references(), desc = 'Go to References'},
+  {"i", vim.lsp.buf.implementation(), desc = 'Go to Implementation'},
+  {"t", vim.lsp.buf.implementation(), desc = 'Go to Type Definition'},
+  { "<leader>f", group = "Telescope Find" },
+  { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffer" },
+  { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Find & Run Commands" },
+  { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File" },
+  { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Git Project Files" },
+  { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Find Help Tags" },
+  { "<leader>fm", "<cmd>Telescope man_pages<cr>", desc = "Find Man Pages" },
+  { "<leader>fo", "<cmd>Telescope oldfiles<cr>", desc = "Find Previously Open Files" },
+  { "<leader>fp", "<cmd>Telescope search_history<cr>", desc = "Find & Re-run Previous Search" },
+  { "<leader>fq", "<cmd>Telescope quick_fix<cr>", desc = "Find Quickfixes" },
+  { "<leader>fr", "<cmd>Telescope registers<cr>", desc = "Find and Paste Vim Registers" },
+  { "<leader>fs", "<cmd>Telescope live_grep<cr>", desc = "Find File by String" },
+  { "<leader>fv", "<cmd>Telescope vim_options<cr>", desc = "Find and Set Vim Options" },
+  { "<leader>fx", "<cmd>Telescope marks<cr>", desc = "Find Marks" },
+  { "<leader>t", group = "Tab Operations" },
+  { "<leader>ta", "<cmd>tabnew <cr>", desc = "Create New Tab" },
+  { "<leader>tc", "<cmd>tabclose <cr>", desc = "Close Current Tab" },
+  { "<leader>tm", group = "Move Operations" },
+  { "<leader>tmn", "<cmd>+tabmove<cr>", desc = "Move Tab to Next Position" },
+  { "<leader>tmp", "<cmd>-tabmove<cr>", desc = "Move Tab to Previous Position" },
+  { "<leader>tn", "<cmd>tabn <cr>", desc = "Switch to Next Tab" },
+  { "<leader>tp", "<cmd>tabp <cr>", desc = "Switch to Previous Tab" },
 })
-
-wk.register({['<leader><Tab>'] = {'<cmd>Neotree toggle<cr>', 'Open File Tree'}})
-
-wk.register({
-  f = {
-    name = "Telescope Find",
-    f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    s = { "<cmd>Telescope live_grep<cr>", "Find File by String" },
-    b = { "<cmd>Telescope buffers<cr>", "Find Buffer" },
-    h = { "<cmd>Telescope help_tags<cr>", "Find Help Tags"},
-    g = { "<cmd>Telescope git_files<cr>", "Find Git Project Files"},
-    o = { "<cmd>Telescope oldfiles<cr>", "Find Previously Open Files"},
-    c = { "<cmd>Telescope commands<cr>", "Find & Run Commands"},
-    m = { "<cmd>Telescope man_pages<cr>", "Find Man Pages"},
-    p = { "<cmd>Telescope search_history<cr>", "Find & Re-run Previous Search"},
-    x = { "<cmd>Telescope marks<cr>", "Find Marks"},
-    q = { "<cmd>Telescope quick_fix<cr>", "Find Quickfixes"},
-    v = { "<cmd>Telescope vim_options<cr>", "Find and Set Vim Options"},
-    r = { "<cmd>Telescope registers<cr>", "Find and Paste Vim Registers"},
-  },
-}, { prefix = "<leader>" })
-
-wk.register({
-  t = {
-    name = "Tab Operations",
-    a = {"<cmd>tabnew <cr>", "Create New Tab"},
-    c = {"<cmd>tabclose <cr>", "Close Current Tab"},
-    n = {"<cmd>tabn <cr>", "Switch to Next Tab"},
-    p = {"<cmd>tabp <cr>", "Switch to Previous Tab"},
-    m = {
-      name = "Move Operations",
-      p = {"<cmd>-tabmove<cr>", "Move Tab to Previous Position"},
-      n = {"<cmd>+tabmove<cr>", "Move Tab to Next Position"},
-    }
-  },
-}, { prefix = "<leader>" })
