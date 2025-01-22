@@ -132,6 +132,10 @@ require("lazy").setup({
     cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
     event = { 'User KittyScrollbackLaunch' },
   },
+  -- Nvim-Ansible
+  {
+    'mfussenegger/nvim-ansible'
+  },
 })
 
 -- Configuration Lspconfig
