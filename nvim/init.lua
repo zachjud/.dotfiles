@@ -9,6 +9,7 @@ require('ftdetect')
 
 -- Colorscheme --
 vim.cmd.colorscheme('tokyonight-night')
+vim.g.terminal_color_0 = vim.g.terminal_color_8 -- Fix too dark black
 
 -- Options --
 
