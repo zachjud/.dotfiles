@@ -4,15 +4,18 @@ require('plugins')
 -- Remaps --
 require('remaps')
 
--- Colorscheme
+-- Filetype Detection --
+require('ftdetect')
+
+-- Colorscheme --
 vim.cmd.colorscheme('tokyonight-night')
 
 -- Options --
 
--- Clipboard
+-- Clipboard --
 vim.opt.clipboard = "unnamedplus"
 
--- View
+-- View --
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.cursorline = true
@@ -20,21 +23,20 @@ vim.opt.cursorlineopt = 'both'
 vim.opt.signcolumn = 'yes'
 vim.opt.conceallevel = 2
 
--- Indentation
+-- Indentation --
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.smartindent = true
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
 
--- Undo
+-- Undo --
 vim.opt.undodir = os.getenv("HOME") .. '/.nvim/undodir'
 vim.opt.undofile = true
 
--- Search
+-- Search --
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.mouse = 'a'
 
--- Remove EOF characters
-vim.opt.fillchars = { eob = ' ' }
+vim.opt.fillchars = { eob = ' ' } -- Remove EOF characters
