@@ -142,8 +142,6 @@ require("lazy").setup({
 })
 
 -- Configuration Lspconfig
-require("mason").setup()
-require("mason-lspconfig").setup()
 require("plugins.lspconfig")
 
 -- Neo Tree
