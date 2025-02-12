@@ -70,7 +70,10 @@ require("lazy").setup({
   -- Telescope
   {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim'}
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'debugloop/telescope-undo.nvim'
+    }
   },
   -- Telescope fzf
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -124,6 +127,10 @@ require("lazy").setup({
   "folke/trouble.nvim",
   cmd = "Trouble",
   },
+  -- Gitsigns
+  {
+    'lewis6991/gitsigns.nvim'
+  },
   -- Kitty-Scrollback
   {
     'mikesmithgh/kitty-scrollback.nvim',
@@ -131,10 +138,12 @@ require("lazy").setup({
     lazy = true,
     cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
     event = { 'User KittyScrollbackLaunch' },
-  }
+  },
 })
 
 -- Configuration Lspconfig
+require("mason").setup()
+require("mason-lspconfig").setup()
 require("plugins.lspconfig")
 
 -- Neo Tree
@@ -162,6 +171,9 @@ require("plugins.tabby")
 
 -- Trouble
 require("trouble").setup()
+
+-- Gitsigns
+require("gitsigns").setup()
 
 -- Kitty-Scrollback
 require('kitty-scrollback').setup()
