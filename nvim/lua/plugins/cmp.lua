@@ -2,7 +2,7 @@ local cmp = require('cmp')
 
 cmp.setup({
   enabled = function()
-    local illegal_filetypes = {["markdown"]=true, ["text"]=true}
+    local illegal_filetypes = {["text"]=true}
     return not illegal_filetypes[vim.bo.ft]
   end,
   snippet = {

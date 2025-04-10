@@ -56,27 +56,6 @@ require("lazy").setup({
       vim.o.timeoutlen = 300
     end,
   },
-  -- Neo Tree
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    }
-  },
-  -- Telescope
-  {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'debugloop/telescope-undo.nvim'
-    }
-  },
-  -- Telescope fzf
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   -- Dropbar
   {
     'Bekaboo/dropbar.nvim',
@@ -100,19 +79,6 @@ require("lazy").setup({
     'nanozuki/tabby.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
   },
-  -- -- Obsidian
-  -- {
-  --   "epwalsh/obsidian.nvim",
-  --   version = "*",  -- recommended, use latest release instead of latest commit
-  --   lazy = true,
-  --   event = {
-  --     'BufReadPre ' .. vim.fn.expand('~/Documents/Obsidian/**.md'),
-  --     'BufNewFile ' .. vim.fn.expand('~/Documents/Obsidian/**.md'),
-  --   },
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  -- },
   -- Noice
   {
   "folke/noice.nvim",
@@ -124,42 +90,46 @@ require("lazy").setup({
   },
   -- Trouble
   {
-  "folke/trouble.nvim",
+    "folke/trouble.nvim",
   cmd = "Trouble",
+  },
+  -- Snacks
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+    bigfile = { enabled = true },
+    explorer = { enabled = true },
+    indent = { enabled = true },
+    input = { enabled = true },
+    picker = { enabled = true },
+    notifier = { enabled = true },
+    quickfile = { enabled = true },
+    scope = { enabled = true },
+    statuscolumn = { enabled = true },
+    words = { enabled = true },
+    rename = { enabled = true },
+    },
   },
   -- Gitsigns
   {
     'lewis6991/gitsigns.nvim'
-  },
-  -- Kitty-Scrollback
-  {
-    'mikesmithgh/kitty-scrollback.nvim',
-    enabled = true,
-    lazy = true,
-    cmd = { 'KittyScrollbackGenerateKittens', 'KittyScrollbackCheckHealth' },
-    event = { 'User KittyScrollbackLaunch' },
   },
 })
 
 -- Configuration Lspconfig
 require("plugins.lspconfig")
 
--- Neo Tree
-require("neo-tree").setup()
-
 -- Treesitter
 require("plugins.treesitter")
 
 -- Completion
 require("plugins.cmp")
-
--- Obsidian
--- require('obsidian').setup({
---   note_id_func = function(title)
---     return title
---   end,
---   dir = "~/Documents/Obsidian"
--- })
 
 -- Noice
 require("plugins.noice")
@@ -173,11 +143,5 @@ require("trouble").setup()
 -- Gitsigns
 require("gitsigns").setup()
 
--- Kitty-Scrollback
-require('kitty-scrollback').setup()
-
 -- Lualine
 require("plugins.lualine")
-
--- Telescope
-require('plugins.telescope')

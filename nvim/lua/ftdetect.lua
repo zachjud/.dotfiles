@@ -1,4 +1,3 @@
--- yaml.ansible detection taken from https://github.com/mfussenegger/nvim-ansible/blob/main/ftdetect/ansible.lua
 if vim.filetype then
   vim.filetype.add({
     pattern = {
@@ -12,6 +11,9 @@ if vim.filetype then
       [".*/roles/.*/handlers/.*%.ya?ml"] = "yaml.ansible",
       [".*/tasks/.*%.ya?ml"] = "yaml.ansible",
       [".*/molecule/.*%.ya?ml"] = "yaml.ansible",
+      [".*%.jinja"] = "jinja",
+      [".*%.jinja2"] = "jinja",
+      [".*%.j2"] = "jinja",
     },
   })
 else
@@ -37,6 +39,27 @@ else
       "*/tasks/*.yaml",
       "*/molecule/*.yml",
       "*/molecule/*.yaml",
+    },
+    callback = function()
+      vim.bo.filetype = "yaml.ansible"
+    end,
+  })
+end
+
+if vim.filetype then
+  vim.filetype.add({
+    pattern = {
+      [".*%.jinja"] = "jinja",
+      [".*%.jinja2"] = "jinja",
+      [".*%.j2"] = "jinja",
+    },
+  })
+else
+  vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    pattern = {
+      "*.jinja",
+      "*.jinja2",
+      "*.j2",
     },
     callback = function()
       vim.bo.filetype = "yaml.ansible"
